@@ -1,5 +1,3 @@
- t = 0; 
- tam = 0; 
 
 function  Absorvente(A)
      k =  0;
@@ -93,24 +91,15 @@ function [Q,T,QI] = Estacionaria(A)
     end
 endfunction
 
-function [P] =TransicaoD(Q,T,QI,t,e)
-    for i = 1 : tam 
-        T(i,i) = T(i,i) ^t;
-    end
-    P = Q * T * QI;
+function [P] =TransicaoD(Q,T,QI,t)
+   
+    Y = T^t;
+    P = Q * Y * QI;
 endfunction
 
-function P = Transicao(A,t,e)
+function P = Transicao(A,t)
         
         B = A^t;
-        
-        if e == 1 then
-            P  = B * [1;0;0];
-        elseif e == 2 then
-           P  = B * [0;1;0];
-        elseif e == 3 then
-            P  = B * [0;0;1];  
-        end
 endfunction
 
 
